@@ -1,4 +1,6 @@
 function [HB, HS, BS] = q1b(HBS)
+% Calcule les lois conjointes des 3 paires de la question Q1.(b)
+%
 % Entrée :
 %   * HBS : Matrice 5 x 4 x 3 des probas de la loi conjointe
 % Sortie :

@@ -1,9 +1,11 @@
 function [H_givenBS, B_givenHS, S_givenHB] = q1c(HBS, HB, HS, BS)
+% Calcule les lois conditionnelles de la question Q1.c)
+%
 % Entrée :
 %   * HBS : Matrice (5x4x3) des probas de la loi conjointe (H, B, S)
-%   * HB : Matrice (5x4) des probas de la loi conjointe (H, B)
-%   * HS : Matrice (5x3) des probas de la loi conjointe (H, S)
-%   * BS : Matrice (4x3) des probas de la loi conjointe (B, S)
+%   * HB : Matrice (5x4) des probas de la loi conjointe (H, B) (q1b)
+%   * HS : Matrice (5x3) des probas de la loi conjointe (H, S) (q1b)
+%   * BS : Matrice (4x3) des probas de la loi conjointe (B, S) (q1b)
 % Sortie :
 %   % H_givenBS : Matrice (5x4x3) : H_givenBS(h,b,s) = P(H = h|B = b,S = s)
 %   % B_givenHS : Matrice (4x5x3) : B_givenHS(b,h,s) = P(B = b|H = h,S = s)

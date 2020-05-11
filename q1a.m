@@ -1,4 +1,6 @@
 function [H, B, S] = q1a(HBS)
+% Calcule les lois marginales des 3 V.A. de la question Q1.(a)
+%
 % Entrée :
 %   * HBS : Matrice 5 x 4 x 3 des probas de la loi conjointe
 % Sortie :
