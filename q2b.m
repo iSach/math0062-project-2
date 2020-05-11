@@ -1,5 +1,6 @@
 function [prob_i, prob_ii] = q2b(S_givenHB, HB, S)
-% Calcule la probabilité qu'au moins un organe soit touché.
+% Calcule la probabilité d'avoir des reflux gastriques alors que le coeur 
+%            et le cerveau sont sains.
 %
 % Entrée :
 %   * S_givenHB : Matrice 3x5x4 des probas de la loi conditionnelle de

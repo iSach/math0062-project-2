@@ -7,8 +7,8 @@ function probability = q2c(H_givenBS, BS, H)
 %   * BS        : Matrice 5x4 des probas de la loi jointe de B et S.
 %   * H         : Probabilités de la loi marginale de H.
 % Sortie :
-%   % probability : Probabilité d'avoir des reflux gastriques alors que le coeur 
-%            et le cerveau sont sains.
+%   * probability : Probabilité de subir un AVC et d'avoir un estomac sain
+%                   en ayant son coeur en hypertension
 %
 
 probability = H_givenBS(2, 4, 1) * (BS(4, 1) / H(2));
