@@ -2,9 +2,9 @@ function [H, B, S] = q1a(HBS)
 % Entrée :
 %   * HBS : Matrice 5 x 4 x 3 des probas de la loi conjointe
 % Sortie :
-%   % H_marginal : Vecteur colonne (5x1) pour la loi marginale de H.
-%   % B_marginal : Vecteur colonne (4x1) pour la loi marginale de B.
-%   % S_marginal : Vecteur colonne (3x1) pour la loi marginale de S.  
+%   % H : Vecteur colonne (5x1) pour la loi marginale de H.
+%   % B : Vecteur colonne (4x1) pour la loi marginale de B.
+%   % S : Vecteur colonne (3x1) pour la loi marginale de S.  
     
     H = zeros(5, 1);
     % Marginale de H (coeur)
