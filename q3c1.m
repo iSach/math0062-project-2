@@ -1,4 +1,4 @@
-function [ER_givenH, VR_givenH] = q3c1(HB, HS, H)
+function [ER_givenH, VR_givenH] = q3c1(HB, HS, BS, H_givenBS, H)
 
 % g_h(H) = R_h
 g_h = [0; -2; -3; -5; -7];
@@ -24,7 +24,24 @@ for h = 1:5
    ER_givenH(h) = gh + E_RB_givenH + E_RS_givenH;
    
    % Variance
-   VR_givenH
+   E_Rb2_givenH = 0;
+   for b = 1:4
+       E_Rb2_givenH = E_Rb2_givenH + (g_b(b))^2 * HB(h, b) / H(h);
+   end
+   E_Rs2_givenH = 0;
+   for s = 1:3
+       E_Rs2_givenH = E_Rs2_givenH + (g_s(s))^2 * HS(h, s) / H(h);
+   end
+   E_RbRs_givenH = 0;
+   for b = 1:4
+       for s = 1:3
+           E_RbRs_givenH = E_RbRs_givenH + g_b(b) * g_s(s) * ...
+               H_givenBS(h, b, s) * BS(b, s) / H(h);
+       end
+   end
+   VR_givenH(h) = E_Rb2_givenH - E_RB_givenH^2 ...
+             + E_Rs2_givenH - E_RS_givenH^2 ...
+             + 2 * (E_RbRs_givenH - E_RB_givenH * E_RS_givenH);
 end
 
 end
