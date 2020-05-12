@@ -1,15 +1,25 @@
 function [ER_givenH, VR_givenH] = q3c1(HB, HS, BS, H_givenBS, H)
+% Calculates the mean and variance of the total points lost R given H.
+%
+% Input:
+%   * HB, HS, BS : Joint probabilities.
+%   * H_givenBS  : Conditional probabilities of H given B and S.
+%   * H          : Marginal law of H.
+%
 
-% g_h(H) = R_h
+% R_h = g_h(H). Random Variable with the points reduced for each H.
 g_h = [0; -2; -3; -5; -7];
-% g_b(S) = R_b
+% R_b = g_b(B). Random Variable with the points reduced for each B.
 g_b = [0; -5; 0; -10];
-% g_s(S) = R_s
+% R_s = g_s(S). Random Variable with the points reduced for each S.
 g_s = [0; 0; -3];
 
+% Initialize the vectors.
 ER_givenH = zeros(5, 1);
 VR_givenH = zeros(5, 1);
 
+% For each value h for the heart, calculate the corresponding value of
+% R given H = h.
 for h = 1:5
    % Expected value
    gh = g_h(h);

@@ -1,19 +1,24 @@
 function [prob_i, prob_ii] = q2b(S_givenHB, HB, S)
-% Calcule la probabilité d'avoir des reflux gastriques alors que le coeur 
-%            et le cerveau sont sains.
+% i)  Computes the probability of acid reflux given the heart and the brain
+%     are healthy.
+% ii) Computes the probability of acid reflux given at least the heart or
+%     the brain is not healthy.
 %
-% Entrée :
-%   * S_givenHB : Matrice 3x5x4 des probas de la loi conditionnelle de
-%                 S sachant (H, B). Calculable avec q1c.m
-%   * HB        : Matrice 5x4 des probas de la loi jointe de H et B.
-%   * S         : Probabilités de la loi marginale de S.
-% Sortie :
-%   % prob_i : Probabilité d'avoir des reflux gastriques alors que le coeur 
-%            et le cerveau sont sains.
+% Input :
+%   * S_givenHB : 3x5x4 Martix of the conditional probabilities of S given
+%                 H and B. Computable with q1c.m
+%   * HB        : 5x4 Matrix of the joint law of the heart and the brain.
+%   * S         : Marginal probabilities of the stomach.
+% Output :
+%   * prob_i  : Q2B.(i): Probability of acid reflux given
+%               the heart and the brain are healthy.
+%   * prob_ii : Q2B.(ii): Probability of acid reflux given at least
+%               the heart or the brain is not healthy.
 %
 
 prob_i = S_givenHB(3, 1, 1);
 
+% Comes from the LOTP. Detailed in the report.
 prob_ii = (S(3) - HB(1, 1) * prob_i) / (1 - HB(1,1));
 
 end

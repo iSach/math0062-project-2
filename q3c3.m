@@ -1,18 +1,20 @@
 function is_eve_verified = q3c3(VR_givenH, ER_givenH, H, V_R)
-% Renvoie 1 si la loi d'Eve (de la variance totale) est vérifiée.
+% Checks if the Eve's law (total variance) is verified.
 %
-% Entrée :
-%   * H         : Loi marginale de H.
-%   * VR_givenH : Valeurs de la variance conditionnelle de R sachant H.
-%   * ER_givenH : Valeurs de l'espérance conditionnelle de R sachant H.
-%   * V_R       : Variance de R, calculée avec q3b1.m.
+% Input :
+%   * H         : Marginal law of H.
+%   * ER_givenH : Expectation of R given H. Computable with q3c1.m.
+%   * VR_givenH : Variance of R given H. Computable with q3c1.m.
+%   * V_R       : Variance of R, computable with q3b1.m.
 %
-% Sortie :
-%   * is_eve_verified : 1 si la loi est vérifiée, 0 sinon.
+% Output :
+%   * is_adam_verified : 1 if the law is verified, 0 otherwise.
 
-law = sum(VR_givenH .* H) + var(ER_givenH, H);
-known = V_R;
+% Value calculated with the law.
+value_with_law = sum(VR_givenH .* H) + var(ER_givenH, H);
+% Known value to compare.
+value_to_check = V_R;
 
-is_eve_verified = abs(known - law) < 0.001;
+is_eve_verified = abs(value_to_check - value_with_law) < 0.001;
 
 end

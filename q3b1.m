@@ -1,24 +1,26 @@
 function [E, V] = q3b1(E_Rh, E_Rb, E_Rs, V_Rh, V_Rb, V_Rs, HB, HS, BS)
-% Calcule les espérances et variances du nombre de points perdus total.
+% Computes the expected value and variance of the total loss of points.
 %
-% Entrée :
-%   * E_Rh, E_Rb, E_Rs : les espérances pour chacun des organes.
-%   *
+% Input :
+%   * E_Rh, E_Rb, E_Rs : Marginal expected vaues.
+%   * V_Rh, V_Rb, V_Rs : Marginal variances.
+%   * HB, HS, BS       : Joint laws probabilities.
 %
-% Sortie :
-%   * E    : Espérance de la réduction totale.
-%   * V    : Variance de la réduction totale.
+% Output :
+%   * E    : Total points lost expected value.
+%   * V    : Total points lost variance.
 
-% g_h(H) = R_h
+% R_h = g_h(H). Random Variable with the points reduced for each H.
 g_h = [0; -2; -3; -5; -7];
-% g_b(S) = R_b
+% R_b = g_b(B). Random Variable with the points reduced for each B.
 g_b = [0; -5; 0; -10];
-% g_s(S) = R_s
+% R_s = g_s(S). Random Variable with the points reduced for each S.
 g_s = [0; 0; -3];
 
-% Espérance linéaire.
+% The mean is linear.
 E = E_Rh + E_Rb + E_Rs;
 
+% Variance of a sum of three variableS.
 % V = V_h + V_b + V_s + 2CovHB + 2CovHS + 2CovBS
 E_HB = 0;
 for h = 1:5

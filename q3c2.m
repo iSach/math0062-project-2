@@ -1,13 +1,13 @@
 function is_adam_verified = q3c2(ER_givenH, H, E_R)
-% Renvoie 1 si la loi d'Adam (de l'espérance totale) est vérifiée.
+% Checks if the Adam's law (total expectation) is verified.
 %
-% Entrée :
-%   * H         : Loi marginale de H.
-%   * ER_givenH : Valeurs de l'espérance conditionnelle de R sachant H.
-%   * E_R       : Espérance de R, calculée avec q3b1.m.
+% Input :
+%   * H         : Marginal law of H.
+%   * ER_givenH : Expectation of R given H. Computable with q3c1.m.
+%   * E_R       : Expectation of R, computable with q3b1.m.
 %
-% Sortie :
-%   * is_adam_verified : 1 si la loi est vérifiée, 0 sinon.
+% Output :
+%   * is_adam_verified : 1 if the law is verified, 0 otherwise.
 
 is_adam_verified = abs(sum(ER_givenH .* H) - E_R) < 0.001;
 

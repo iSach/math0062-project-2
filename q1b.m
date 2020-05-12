@@ -1,34 +1,36 @@
 function [HB, HS, BS] = q1b(HBS)
-% Calcule les lois conjointes des 3 paires de la question Q1.(b)
+% Computes the pairwise joint laws of (H, B), (H, S) and (B, S).
 %
-% Entrée :
-%   * HBS : Matrice 5 x 4 x 3 des probas de la loi conjointe
-% Sortie :
-%   % HB : Matrice (5x4) pour la loi conjointe de (H, B).
-%   % HS : Matrice (5x3) pour la loi conjointe de (H, S).
-%   % BS : Matrice (4x3) pour la loi conjointe de (B, S). 
+% Input :
+%   * HBS : 5x4x3 Matrix of the joint probabilities for (Heart, Brain,
+%           Stomach)
+% Output :
+%   * HB : Matrix (5x4) for the joint law of (H, B).
+%   * HS : Matrix (5x3) for the joint law of (H, S).
+%   * BS : Matrix (4x3) for the joint law of (B, S). 
     
-    HB = zeros(5, 4);
-    % Loi conjointe de (H, B) = (coeur, cerveau)
-    for h = 1:5
-        for b = 1:4
-            HB(h, b) = sum(HBS(h, b, :));
-        end
-    end
-    
-    HS = zeros(5, 3);
-    % Loi conjointe de (H, S) = (coeur, estomac)
-    for h = 1:5
-        for s = 1:3
-            HS(h, s) = sum(HBS(h, :, s));
-        end
-    end
-    
-    BS = zeros(4, 3);
-    % Loi conjointe de (B, S) = (cerveau, estomac)
+% Joint law of (H, B) (heart & brain)
+HB = zeros(5, 4);
+for h = 1:5
     for b = 1:4
-        for s = 1:3
-            BS(b, s) = sum(HBS(:, b, s));
-        end
+        HB(h, b) = sum(HBS(h, b, :));
     end
+end
+
+% Joint law of (H, S) = (heart & stomach)
+HS = zeros(5, 3);
+for h = 1:5
+    for s = 1:3
+        HS(h, s) = sum(HBS(h, :, s));
+    end
+end
+
+% Joint law of (B, S) = (brain & stomach)
+BS = zeros(4, 3);
+for b = 1:4
+    for s = 1:3
+        BS(b, s) = sum(HBS(:, b, s));
+    end
+end
+
 end
